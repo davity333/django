@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
-class UsesManager(BaseUserManager):
+class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError("El correo electrónico es obligatorio")
@@ -16,16 +16,22 @@ class UsesManager(BaseUserManager):
         extra_fields.setdefault("is_superuser", True)
         return self.create_user(email, password, **extra_fields)
 
-class Uses(AbstractBaseUser):
+class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
     nombre = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    objects = UsesManager()
+    objects = UserManager()
 
     USERNAME_FIELD = "email"  # Usar email en lugar de username
     REQUIRED_FIELDS = ["nombre"]  # Asegúrate de que 'nombre' es un campo obligatorio
 
     def __str__(self):
         return self.email
+class OnlyUser(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.TextField(blank=True, null=True)
+    password = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
