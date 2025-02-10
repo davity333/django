@@ -18,6 +18,32 @@ class Proyect(TemplateView):
 
 class Experience(TemplateView):
     template_name = 'experience.html'
+
+class User(TemplateView):
+    template_name = 'user.html'
+
+
+class principal(TemplateView):
+    template_name = 'principal.html'
+
+
+class formLogin(TemplateView):
+    template_name = 'userForm.html'
+
+
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+    model = Carrera
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["saludo"] = "Hola de nuevo"
+        context["lista"] = Carrera.objects.all()    
+        return context
+
+    @method_decorator(login_required, name='dispatch')
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     
 class AboutPageView(TemplateView):
     template_name = 'about.html'
