@@ -104,25 +104,31 @@
             <!-- {{ error }} -->
         </div>
 
-        <form method="post" action="#">
+        <form method="post" action="{% url 'experiencia' %}">
+            {% csrf_token %}
             <div class="form-group">
-                <label for="descripcion">Descripción del Trabajo</label>
-                <textarea id="descripcion" name="descripcion" placeholder="Descripción del trabajo realizado" required></textarea>
+                <label for="{{ form.description.id_for_label }}">Descripción del Trabajo</label>
+                {{ form.description }}
             </div>
 
             <div class="form-group">
-                <label for="fecha_inicio">Fecha de Inicio</label>
-                <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+                <label for="{{ form.date.id_for_label }}">Fecha de Inicio</label>
+                {{ form.date }}
             </div>
 
             <div class="form-group">
-                <label for="duracion">Duración</label>
-                <input type="text" id="duracion" name="duracion" placeholder="Duración del empleo (ej. 1 año, 6 meses)" required>
+                <label for="{{ form.duration.id_for_label }}">Duración</label>
+                {{ form.duration }}
             </div>
 
             <div class="form-group">
-                <label for="empresa">Nombre de la Empresa</label>
-                <input type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa" required>
+                <label for="{{ form.emprise.id_for_label }}">Nombre de la Empresa</label>
+                {{ form.emprise }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.proyect_id.id_for_label }}">Proyecto Asociado</label>
+                {{ form.proyect_id }}
             </div>
 
             <button type="submit">Guardar Experiencia</button>
