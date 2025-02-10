@@ -64,7 +64,7 @@ ROOT_URLCONF = 'tutorial.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/ 'tutorial/templates'],
+        'DIRS': [BASE_DIR/'tutorial/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,34 +83,19 @@ WSGI_APPLICATION = 'tutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
-#SECRET_KEY = os.getenv('SECRET_KEY')
-#DEBUG = os.getenv('DEBUG') == 'True'
 DEBUG = True
 SECRET_KEY = 'django-insecure-&#s@p7@q-ld)=rvl8xcqje_7$aj0m2#!4qi!!uhzdkzrz@&7p5'
-
-#DATABASES = {
-    #'default': {
-        #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': os.getenv('DB_NAME'),
-        #'USER': os.getenv('DB_USER'),
-        #'PASSWORD': os.getenv('DB_PASSWORD'),
-        #'HOST': os.getenv('DB_HOST'),
-        #'PORT': os.getenv('DB_PORT'),
-    #}
-#}
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cliente_servidor_practica',
-        'USER': 'root',
-        'PASSWORD': 'davity',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
-
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Default
 ]
@@ -154,12 +139,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 #BASE_DIR / "tutorial","C:\\Users\\reygu\\Desktop\\UNIVERSIDAD POLITECNICA DE CHIAPAS\\5TO CUATRIMESTRE\\Programación Cliente Servidor\\Corte 2\\django\\tutorial\\tutorial\\static"
-#BASE_DIR /"static", "C:\Users\hecso\Desktop\UP\actividad_django\django_page_web\tutorial"
+BASE_DIR /"static",  "C:\\Users\\hecso\\Desktop\\UP\\django2\\django"
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-BASE_DIR / "tutorial","C:\\Users\\reygu\\Desktop\\UNIVERSIDAD POLITECNICA DE CHIAPAS\\5TO CUATRIMESTRE\\Programación Cliente Servidor\\Corte 2\\django\\django\\tutorial\\tutorial\\static"
-
-]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
