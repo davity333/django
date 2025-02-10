@@ -116,6 +116,12 @@
             color: #fff;
         }
 
+        a{
+            color: #00f0ff;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             header {
@@ -145,7 +151,7 @@
 <body>
 
     <header>
-        <div class="logo">IngeCode</div>
+        <a href="{% url 'principal' %}" class="logo">IngeCode</a>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -157,7 +163,6 @@
                 <li><a href="#">Reseñas</a></li>
                 <li><a href="#">Servicios</a></li>
             </ul>
-            <button class="btn">Agregar usuario</button>
         </nav>
     </header>
 
@@ -177,6 +182,7 @@
         </div>
         <button type="submit" class="btn">Registrarse</button>
     </form>
+    <a href="{% url 'users' %}">Usuarios agregados</a>
 
 </body>
 </html>

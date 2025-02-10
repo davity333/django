@@ -9,7 +9,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-
+from django.shortcuts import render
 
 def index(request):
     return HttpResponse("Hello, World!")
@@ -32,6 +32,10 @@ class formLogin(TemplateView):
     template_name = 'userForm.html'
 
 
+class users(TemplateView):
+    template_name = 'users.html'
+
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
     model = Carrera
@@ -40,6 +44,9 @@ class HomePageView(TemplateView):
         context["saludo"] = "Hola de nuevo"
         context["lista"] = Carrera.objects.all()    
         return context
+
+#direccionar a otra
+
 
     @method_decorator(login_required, name='dispatch')
     def dispatch(self, *args, **kwargs):
@@ -65,3 +72,5 @@ class CarrerasCreateView(TemplateView):
         context = {'form': form}
         return self.render_to_response(context)    
 
+def agregar_usuario(request):
+    return render(request, 'userForm.html') 

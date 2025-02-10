@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tutorial.view import index
-from tutorial.view import HomePageView,AboutPageView,BasePageView,CarrerasCreateView, Proyect, Experience, User, principal, formLogin
+from tutorial.view import HomePageView,AboutPageView,BasePageView,CarrerasCreateView, Proyect, Experience, User, principal, formLogin, users
 from django.contrib.auth import views as auth_views
+from tutorial import view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('principal/', principal.as_view(), name='principal'),
@@ -31,5 +32,5 @@ urlpatterns = [
     path('proyect/', Proyect.as_view(), name= 'proyecto'),
     path('experiencia/', Experience.as_view(), name= 'experiencia'),
     path('user/', User.as_view(), name= 'user'),
-
+    path('users/', users.as_view(), name= 'users'),
 ]
