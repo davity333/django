@@ -6,8 +6,8 @@
     <title>Formulario de Proyecto</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,39 +18,40 @@
         .form-container {
             background: #fff;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 500px;
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
             color: #333;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            text-align: left;
         }
 
         .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
             font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.75rem;
+            padding: 10px;
             border: 2px solid #ddd;
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: 0.3s;
         }
 
         .form-group input:focus,
@@ -58,31 +59,32 @@
         .form-group select:focus {
             border-color: #2575fc;
             outline: none;
+            box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
         }
 
         .form-group textarea {
-            height: 150px;
-            resize: vertical;
+            height: 120px;
+            resize: none;
         }
 
         button {
-            background-color: #2575fc;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
             color: white;
-            padding: 0.75rem 2rem;
+            padding: 12px;
             border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
             cursor: pointer;
             width: 100%;
-            transition: background 0.3s ease;
+            transition: 0.3s;
         }
 
         button:hover {
-            background-color: #6a11cb;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
         }
 
         button:active {
-            transform: translateY(2px);
+            transform: scale(0.98);
         }
 
         .error-message {
@@ -98,31 +100,37 @@
     <div class="form-container">
         <h1>Agregar Proyecto</h1>
 
-        <!-- Si hay error, se mostrará aquí -->
+        <!-- Mensajes de error -->
         <div class="error-message">
-            <!-- Ejemplo de error -->
             <!-- {{ error }} -->
         </div>
 
-        <form method="post" action="#">
+        <form method="post" action="{% url 'proyecto' %}">
+            {% csrf_token %}
+            
             <div class="form-group">
-                <label for="nombre">Nombre del Proyecto</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre del proyecto" required>
+                <label for="{{ form.name.id_for_label }}">Nombre del Proyecto</label>
+                {{ form.name }}
             </div>
 
             <div class="form-group">
-                <label for="fecha">Fecha de Inicio</label>
-                <input type="date" id="fecha" name="fecha" required>
+                <label for="{{ form.date.id_for_label }}">Fecha de Inicio</label>
+                {{ form.date }}
             </div>
 
             <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <textarea id="descripcion" name="descripcion" placeholder="Descripción del proyecto" required></textarea>
+                <label for="{{ form.description.id_for_label }}">Descripción</label>
+                {{ form.description }}
             </div>
 
             <div class="form-group">
-                <label for="tecnologias">Tecnologías Usadas</label>
-                <input type="text" id="tecnologias" name="tecnologias" placeholder="Lista de tecnologías" required>
+                <label for="{{ form.technologies.id_for_label }}">Tecnologías Usadas</label>
+                {{ form.technologies }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.allie.id_for_label }}">Aliado</label>
+                {{ form.allie }}
             </div>
 
             <button type="submit">Guardar Proyecto</button>
