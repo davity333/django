@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IngeCode - Innovación con Software</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #222;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00f0ff;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            display: inline;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        ul li a:hover {
+            color: #00f0ff;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #00f0ff, #6f00ff);
+            border: none;
+            padding: 10px 15px;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px 50px;
+            margin-top: 100px; /* Asegura que no quede pegado al header */
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #bbb;
+        }
+
+        /* Content Section */
+        .content {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .image-container img {
+            width: 45%;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        /* Sección Sobre Nosotros */
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            gap: 2rem;
+        }
+
+        .about-content {
+            max-width: 50%;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            color: #bbb;
+        }
+
+        .about-image img {
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        /* Sección de Servicios */
+        .services {
+            display: flex;
+            max-width: 1000px;
+            margin: auto;
+            gap: 2rem;
+            padding: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .services-intro {
+            max-width: 40%;
+        }
+
+        .tag {
+            display: inline-block;
+            background: linear-gradient(90deg, #00f0ff, #6f00ff);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            width: 60%;
+        }
+
+        .service-card {
+            background-color: #111;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+
+        .icon {
+            font-size: 30px;
+            background: #00f0ff;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-content, .services-intro {
+                max-width: 100%;
+            }
+
+            .about-image img {
+                width: 100%;
+            }
+
+            .services {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">IngeCode</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Aliados</a></li>
+                <li><a href="#">Contactos</a></li>
+                <li><a href="#">Educación</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Proyectos</a></li>
+                <li><a href="#">Reseñas</a></li>
+                <li><a href="#">Servicios</a></li>
+            </ul>
+            <button class="btn">Agregar usuario</button>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h2>Welcome to IngeCode</h2>
+        <h1>IngeCode - Creando innovación con software</h1>
+        <p><strong>IngeCode</strong> es una empresa especializada en el desarrollo de <strong>sitios web</strong>, <strong>landing pages</strong> y <strong>aplicaciones web</strong>, tanto dinámicas como estáticas.</p>
+        <button class="btn">Conocer</button>
+    </section>
+    
+    <section class="content">
+        <div class="image-container">
+            <img src="code.jpg" alt="Código en pantalla">
+            <img src="developer.jpg" alt="Desarrollador trabajando">
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="services-intro">
+            <span class="tag">Nuestros servicios</span>
+            <h2>Asegúrese de recibir servicios de alta calidad</h2>
+            <p>Nuestro equipo de trabajo realiza ciertos servicios para nuestros clientes, satisfaciendo sus necesidades y ayudando a crear innovaciones.</p>
+            <button class="btn">Ver todos los servicios</button>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon">💻</div>
+                <h3>Aplicaciones Web</h3>
+                <p>Desarrollamos <strong>aplicaciones web personalizadas</strong>, escalables y optimizadas.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🎨</div>
+                <h3>Diseño UI/UX</h3>
+                <p>Creemos <strong>diseños intuitivos y atractivos</strong> que mejoran la experiencia de usuario.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">📈</div>
+                <h3>Marketing Digital</h3>
+                <p>Potenciamos tu marca con <strong>estrategias de marketing digital efectivas</strong>.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">📦</div>
+                <h3>Diseño de Producto</h3>
+                <p>Transformamos ideas en <strong>productos digitales innovadores</strong>.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -23,6 +23,15 @@ class Experience(TemplateView):
 class User(TemplateView):
     template_name = 'user.html'
 
+
+class principal(TemplateView):
+    template_name = 'principal.html'
+
+
+class formLogin(TemplateView):
+    template_name = 'userForm.html'
+
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
     model = Carrera

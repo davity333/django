@@ -17,10 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tutorial.view import index
-from tutorial.view import HomePageView,AboutPageView,BasePageView,CarrerasCreateView, Proyect, Experience, User
+from tutorial.view import HomePageView,AboutPageView,BasePageView,CarrerasCreateView, Proyect, Experience, User, principal, formLogin
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('principal/', principal.as_view(), name='principal'),
+    path('userForm/', formLogin.as_view(), name= 'form_login'),
     path('', HomePageView.as_view(), name= 'home'),
     path('about', AboutPageView.as_view(), name= 'about'),
     path('carrera/crear',CarrerasCreateView.as_view(), name= 'carrera_crear'),
