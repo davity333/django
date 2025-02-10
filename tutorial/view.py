@@ -45,13 +45,15 @@ class Experience(TemplateView):
 class User(TemplateView):
     template_name = 'user.html'
 
-
 class principal(TemplateView):
     template_name = 'principal.html'
 
   
 class formLogin(TemplateView):  
     template_name = 'userForm.html'
+
+class AliadoForm(TemplateView):
+    template_name = 'aliados.html'
 
     def get(self, request):
         form_instance = UserForm()
