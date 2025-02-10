@@ -222,63 +222,39 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Aliados</a></li>
-                <li><a href="#">Experiencia</a></li>
+                <li><a href="#">Contactos</a></li>
+                <li><a href="#">Educación</a></li>
                 <li><a href="#">Nosotros</a></li>
                 <li><a href="#">Proyectos</a></li>
+                <li><a href="#">Reseñas</a></li>
                 <li><a href="#">Servicios</a></li>
             </ul>
-
             <a class="btn" href="{% url 'form_login' %}">
                 Agregar usuario
             </a>
-
-            <button class="btn"><a href="{% url 'form_login' %}">Agregar usuario</a></button>
         </nav>
     </header>
-    
-    <section class="hero">
-        <h2>Welcome to IngeCode</h2>
-        <h1>IngeCode - Creando innovación con software</h1>
-        <p><strong>IngeCode</strong> es una empresa especializada en el desarrollo de <strong>sitios web</strong>, <strong>landing pages</strong> y <strong>aplicaciones web</strong>, tanto dinámicas como estáticas.</p>
-        <button class="btn">Conocer</button>
-    </section>
-    
-    <section class="content">
-        <div class="image-container">
-            <img src="code.jpg" alt="Código en pantalla">
-            <img src="developer.jpg" alt="Desarrollador trabajando">
-        </div>
-    </section>
 
-    <section class="services">
-        <div class="services-intro">
-            <span class="tag">Nuestros servicios</span>
-            <h2>Asegúrese de recibir servicios de alta calidad</h2>
-            <p>Nuestro equipo de trabajo realiza ciertos servicios para nuestros clientes, satisfaciendo sus necesidades y ayudando a crear innovaciones.</p>
-            <button class="btn">Ver todos los servicios</button>
+    <form class="form" method="post">
+        
+        <h2 style="color: #fff;">Agregar Aliados</h2>
+    
+        <div class="input-group">
+            <label >Primera colaboracion</label>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="icon">💻</div>
-                <h3>Aplicaciones Web</h3>
-                <p>Desarrollamos <strong>aplicaciones web personalizadas</strong>, escalables y optimizadas.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">🎨</div>
-                <h3>Diseño UI/UX</h3>
-                <p>Creemos <strong>diseños intuitivos y atractivos</strong> que mejoran la experiencia de usuario.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">📈</div>
-                <h3>Marketing Digital</h3>
-                <p>Potenciamos tu marca con <strong>estrategias de marketing digital efectivas</strong>.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">📦</div>
-                <h3>Diseño de Producto</h3>
-                <p>Transformamos ideas en <strong>productos digitales innovadores</strong>.</p>
-            </div>
+        <div class="input-group">
+            <label >Descripcion</label>
         </div>
-    </section>
+        <div class="input-group">
+            <label >Nombre alie</label>
+            
+        </div>
+    
+        <button type="submit" class="btn">Agregar aliado</button>
+    </form>
+    
+
+    </form>    
+
 </body>
 </html>

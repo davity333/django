@@ -16,18 +16,23 @@ def index(request):
 class Proyect(TemplateView):
     template_name = 'proyect.html'
 
+class Aliado(TemplateView):
+    template_name = 'aliados.html'
+
 class Experience(TemplateView):
     template_name = 'experience.html'
 
 class User(TemplateView):
     template_name = 'user.html'
 
-
 class principal(TemplateView):
     template_name = 'principal.html'
 
 class formLogin(TemplateView):  
     template_name = 'userForm.html'
+
+class AliadoForm(TemplateView):
+    template_name = 'aliados.html'
 
     def get(self, request):
         form_instance = UserForm()
@@ -38,14 +43,6 @@ class users(TemplateView):
     template_name = 'users.html'
 
 
-class HomePageView(TemplateView):
-    template_name = 'home.html'
-    model = Carrera
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["saludo"] = "Hola de nuevo"
-        context["lista"] = Carrera.objects.all()    
-        return context
 
 #direccionar a otra
 
@@ -54,8 +51,6 @@ class HomePageView(TemplateView):
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
-    
-
     def post(self, request):
         form_instance = UserForm(request.POST)
         if form_instance.is_valid():
@@ -63,32 +58,4 @@ class HomePageView(TemplateView):
             return redirect('principal')  
         return render(request, self.template_name, {'form': form_instance})
 
-class AboutPageView(TemplateView):
-    template_name = 'about.html'
-class BasePageView(TemplateView):
-    template_name = 'base.html'    
-from django.views.generic import TemplateView
-from .views.formUser import UserForm
-
-from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
-from .views.formUser import UserForm
-
-class UserView(TemplateView):
-    template_name = 'user.html'
-
-    def get(self, request):
-        return render(request, self.template_name)
-
-    def post(self, request, *args, **kwargs):
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home') 
-        context = {'form': form}
-        return self.render_to_response(context)    
-
-def agregar_usuario(request):
-    return render(request, 'userForm.html') 
-            return redirect('')
-        return self.render_to_response({'form': form})
+ 
