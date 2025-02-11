@@ -6,51 +6,8 @@
     <title>IngeCode - Innovación con Software</title>
     <style>
         body {
-            background-color: #0a0a0a; /* Negro neón */
-            color: #00bfff; /* Azul neón */
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .form-container {
-            background-color: #121212; /* Negro oscuro */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px #00bfff;
-            width: 300px;
-        }
-        label {
-            font-weight: bold;
-        }
-        input, textarea, select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #00bfff;
-            background-color: #1c1c1c;
-            color: #00bfff;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #00bfff;
-            color: #121212;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0077b6;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
+            background-color: #0a0a0a;
             color: #fff;
             margin: 0;
             padding: 0;
@@ -257,19 +214,91 @@
             }
         }
 
-        .palabra{
-            font-size: 20px;
-            color: #00f0ff;
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 3%;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            background-color: #121212;
+            box-shadow: 0 0 15px #00bfff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #00bfff;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #0077b6;
+            color: #fff;
+        }
+        td {
+            background-color: #1c1c1c;
+        }
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            background: none;
+            color: inherit;
+        }
+        .edit {
+            color: #ffffff;
+        }
+        .delete {
+            color: #fff;
+        }
+        .form-container {
+            background-color: #121212;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00bfff;
+            text-align: left;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #00bfff;
+            background-color: #1c1c1c;
+            color: #00bfff;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #00bfff;
+            color: #121212;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0077b6;
         }
 
-        section{
-            display: flex;
-            flex-direction: column;
+        .lista{
+            margin-top: 7%;
         }
-        
-        .texto{
-            font-size: 20px;
-            margin-top: 20px;
+
+        .agregar{
+            color:#00bfff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 10px;
         }
     </style>
 </head>
@@ -278,43 +307,67 @@
         <nav>
             <div class="logo">IngeCode</div>
             <ul>
-                <li><a href="{% url 'aliados' %}">Aliados</a></li>
-                <li><a href="{% url 'users' %}">Usuario</a></li>
-                <li><a href="{% url 'experiencia' %}">Experiencia</a></li>
+                <li><a href="#">Aliados</a></li>
+                <li><a href="#">Usuario</a></li>
+                <li><a href="#">Experiencia</a></li>
                 <li><a href="#">Proyectos</a></li>
-                <li><a href="{% url 'servicesView' %}">Servicios</a></li>
+                <li><a href="#">Servicios</a></li>
             </ul>
-            <a class="btn" href="{% url 'servicesView' %}">
-                Servicios
+            <a class="btn" href="{% url 'servicesForm' %}">
+                Agregar servicio
             </a>
         </nav>
     </header>
+    
 
-    <section>
+    <h2 class="lista">Lista de aliados</h2>
+    <div class="container">
+        <!-- Tabla de Proyectos -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Numero colaboraciones</th>
+                    <th>Primera colaboracion</th>
+                    <th>descripcion</th>
+                    <th>Nombre Alia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Proyecto 1</td>
+                    <td>Sistema de gestión</td>
+                    <td>Python</td>
+                    <td>
+                        <button class="btn edit">Editar</button>
+                        <button class="btn delete">Eliminar</button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <!-- Formulario de Edición -->
         <div class="form-container">
-            <h2>Agregar servicio</h2>
+            <h3>Editar Alias</h3>
             <form>
-                <label for="nombre">Nombre:</label>
+                <label for="nombre">Numero colaboraciones</label>
                 <input type="text" id="nombre" name="nombre" required>
-    
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
-    
-                <label for="tecnologia">Tecnología:</label>
-                <select id="tecnologia" name="tecnologia">
-                    <option value="python">Python</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="java">Java</option>
-                    <option value="otros">Otros</option>
-                </select>
-    
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-        <div class="texto">
-        <a href="{% url 'servicesView' %}" class="palabra">Administrar servicios</a>
-        </div>
-    </section>
 
+                <label for="descripcion">Primera colaboracion</label>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+                <label for="tecnologia">descripcion:</label>
+                <input type="text" id="tecnologia" name="tecnologia" required>
+
+                <label for="tecnologia">Numero de alias:</label>
+                <input type="number" id="tecnologia" name="tecnologia" required>
+
+                <button type="submit">Guardar Cambios</button>
+            </form>
+            <a class="agregar" href="{% url 'servicesForm' %}">
+                Agregar nuevo Alias
+            </a>
+        </div>
+    </div>
 </body>
 </html>

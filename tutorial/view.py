@@ -59,10 +59,13 @@ class UsersView(TemplateView):
     template_name = 'users.html'
 
 class ServicesView(TemplateView):
-    template_name ='services.html'
+    template_name ='servicesView.html'
 
 class ServicesForm(TemplateView):
     template_name ='servicesForm.html'
+
+class AliadoForm(TemplateView):
+    template_name = 'aliadosUpdate.html'
 
     def get(self, request):
         form_instance = UserForm()
