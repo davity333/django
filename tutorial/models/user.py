@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
 class UserManager(BaseUserManager):
@@ -29,9 +29,24 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
-class OnlyUser(models.Model):
+class OnlyUser( AbstractBaseUser, PermissionsMixin, models.Model):
     name = models.CharField(max_length=100)
     email = models.TextField(blank=True, null=True)
     password = models.CharField(max_length=100)
+
+    USERNAME_FIELD = 'email'  # Aquí indicamos que el email es el campo principal
+    REQUIRED_FIELDS = ['name'] 
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='onlyuser_set',  # Evitar el conflicto con auth.User
+        blank=True
+    )
+    
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='onlyuser_set',  # Evitar el conflicto con auth.User
+        blank=True
+    )
+
     def __str__(self):
         return self.name

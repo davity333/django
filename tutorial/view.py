@@ -79,6 +79,8 @@ class BasePageView(TemplateView):
     template_name = 'base.html'    
 class UserView(TemplateView):
     template_name = 'userForm.html'
+class UserView(TemplateView):
+    template_name = 'userForm.html'
 
     def get(self, request, *args, **kwargs):
         form = UserForm()
@@ -87,8 +89,10 @@ class UserView(TemplateView):
     def post(self, request, *args, **kwargs):
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('users')  # Redirigir a la lista de usuarios después del registro
+            user = form.save(commit=False)  # No guarda inmediatamente el usuario
+            user.set_password(form.cleaned_data['password'])  # Hashea la contraseña
+            user.save()  # Ahora sí guarda el usuario con la contraseña hasheada
+            return redirect('users')  # Redirige a la lista de usuarios después del registro
         return self.render_to_response({'form': form})
 class UsersView(TemplateView):
     template_name = 'users.html'
