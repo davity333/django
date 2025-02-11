@@ -96,11 +96,11 @@
 
             <!-- Renderizar campos del formulario -->
             <div class="form-group">
-                <label for="id_username">Usuario</label>
-                {{ form.username }}
-                {% if form.username.errors %}
+                <label for="id_name">Usuario</label>
+                {{ form.name }}
+                {% if form.name.errors %}
                     <div class="error-message">
-                        {{ form.username.errors }}
+                        {{ form.name.errors }}
                     </div>
                 {% endif %}
             </div>
