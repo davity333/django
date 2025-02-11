@@ -56,6 +56,12 @@ class formLogin(TemplateView):
 class AliadoForm(TemplateView):
     template_name = 'aliados.html'
 
+class ServicesView(TemplateView):
+    template_name ='services.html'
+
+class ServicesForm(TemplateView):
+    template_name ='servicesForm.html'
+
     def get(self, request):
         form_instance = UserForm()
         return render(request, self.template_name, {'form': form_instance})
@@ -72,13 +78,6 @@ class Aliado(TemplateView):
     template_name = 'aliados.html'
 class BasePageView(TemplateView):
     template_name = 'base.html'    
-from django.views.generic import TemplateView
-from .views.formUser import UserForm
-
-from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
-from .views.formUser import UserForm
-
 class UserView(TemplateView):
     template_name = 'userForm.html'
 
