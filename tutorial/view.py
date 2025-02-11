@@ -12,7 +12,12 @@ from .views.formProyecto import ProyectForm
 from .views.formExperience import ExperienceForm
 from .models import OnlyUser
 from django.http import JsonResponse
+from .views.formService import ServiceForm
 import json
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import TemplateView, View
+from .models import Service
+
 def index(request):
     return HttpResponse("Hello, World!")
 
@@ -64,6 +69,12 @@ class ServicesForm(TemplateView):
 
 class AliadoForm(TemplateView):
     template_name = 'aliadosUpdate.html'
+
+class ProyectoForm(TemplateView):
+    template_name = 'proyectForm.html'
+
+class ExperienciaForm(TemplateView):
+    template_name = 'ExperienceForm.html'
 
     def get(self, request):
         form_instance = UserForm()
@@ -135,3 +146,55 @@ class UsersView(TemplateView):
             user.save()
             return redirect('users')
         return redirect('users')
+
+#SERVICES
+class ServiceListView(TemplateView):
+    template_name = 'servicesView.html'
+
+    def get(self, request):
+        services = Service.objects.all()
+        return render(request, self.template_name, {'services': services})
+
+class ServiceCreateView(View):
+    template_name = 'serviceForm.html'
+
+    def get(self, request):
+        form = ServiceForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = ServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('servicesView')
+        return render(request, self.template_name, {'form': form})
+
+class ServiceUpdateView(View):
+    template_name = 'serviceForm.html'
+
+    def get(self, request, pk):
+        service = get_object_or_404(Service, pk=pk)
+        form = ServiceForm(instance=service)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, pk):
+        service = get_object_or_404(Service, pk=pk)
+        form = ServiceForm(request.POST, instance=service)
+        if form.is_valid():
+            form.save()
+            return redirect('servicesView')
+        return render(request, self.template_name, {'form': form})
+
+class ServiceCreateView(View):
+    template_name = 'serviceForm.html'
+
+    def get(self, request):
+        form = ServiceForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = ServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('servicesView')  # Redirige después de guardar
+        return render(request, self.template_name, {'form': form})

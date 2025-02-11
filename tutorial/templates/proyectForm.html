@@ -315,22 +315,23 @@
                 <li><a href="#">CERRAR SESIÓN</a></li>
             </ul>
             <a class="btn" href="{% url 'servicesForm' %}">
-                Agregar servicio
+                Agregar Proyecto
             </a>
         </nav>
     </header>
     
 
-    <h2 class="lista">Lista de aliados</h2>
+    <h2 class="lista">Lista de Proyectos</h2>
     <div class="container">
         <!-- Tabla de Proyectos -->
         <table>
             <thead>
                 <tr>
-                    <th>Numero colaboraciones</th>
-                    <th>Primera colaboracion</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
                     <th>descripcion</th>
-                    <th>Nombre Alia</th>
+                    <th>tecnologia</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -338,6 +339,7 @@
                     <td>Proyecto 1</td>
                     <td>Sistema de gestión</td>
                     <td>Python</td>
+                    <td>Django</td>
                     <td>
                         <button class="btn edit">Editar</button>
                         <button class="btn delete">Eliminar</button>
@@ -349,24 +351,24 @@
 
         <!-- Formulario de Edición -->
         <div class="form-container">
-            <h3>Editar Alias</h3>
+            <h3>Editar Proyecto</h3>
             <form>
-                <label for="nombre">Numero colaboraciones</label>
+                <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" required>
 
-                <label for="descripcion">Primera colaboracion</label>
-                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+                <label for="descripcion">Fecha</label>
+                <textarea id="descripcion" name="fecha" rows="4" required></textarea>
 
                 <label for="tecnologia">descripcion:</label>
-                <input type="text" id="tecnologia" name="tecnologia" required>
+                <input type="text" id="tecnologia" name="descripcion" required>
 
-                <label for="tecnologia">Numero de alias:</label>
+                <label for="tecnologia">Tecnologia:</label>
                 <input type="number" id="tecnologia" name="tecnologia" required>
 
                 <button type="submit">Guardar Cambios</button>
             </form>
             <a class="agregar" href="{% url 'servicesForm' %}">
-                Agregar nuevo Alias
+                Agregar nuevo proyecto
             </a>
         </div>
     </div>

@@ -293,21 +293,17 @@
     <section>
         <div class="form-container">
             <h2>Agregar servicio</h2>
-            <form>
+            <form method="POST" action="{% url 'servicesForm' %}">
+                {% csrf_token %}
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
-    
+
                 <label for="descripcion">Descripción:</label>
                 <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
-    
+
                 <label for="tecnologia">Tecnología:</label>
-                <select id="tecnologia" name="tecnologia">
-                    <option value="python">Python</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="java">Java</option>
-                    <option value="otros">Otros</option>
-                </select>
-    
+                <input type="text" id="tecnologia" name="tecnologia">
+
                 <button type="submit">Enviar</button>
             </form>
         </div>
@@ -315,6 +311,6 @@
         <a href="{% url 'servicesView' %}" class="palabra">Administrar servicios</a>
         </div>
     </section>
-
 </body>
+
 </html>

@@ -220,14 +220,12 @@
         <nav>
             <div class="logo">IngeCode</div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Aliados</a></li>
-                <li><a href="#">Contactos</a></li>
-                <li><a href="#">Educación</a></li>
-                <li><a href="#">Nosotros</a></li>
+                <li><a href="{% url 'aliados' %}">Aliados</a></li>
+                <li><a href="{% url 'users' %}">Usuario</a></li>
+                <li><a href="{% url 'experiencia' %}">Experiencia</a></li>
                 <li><a href="#">Proyectos</a></li>
-                <li><a href="#">Reseñas</a></li>
-                <li><a href="#">Servicios</a></li>
+                <li><a href="{% url 'servicesView' %}">Servicios</a></li>
+                <li><a href="#">CERRAR SESIÓN</a></li>
             </ul>
             <a class="btn" href="{% url 'form_login' %}">
                 Agregar usuario
