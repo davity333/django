@@ -11,6 +11,7 @@ from .views.formUser import UserForm
 from .views.formProyecto import ProyectForm
 from .views.formExperience import ExperienceForm
 from .models import OnlyUser
+from .views.formService import ServiceForm
 from django.http import JsonResponse
 import json
 def index(request):
@@ -57,21 +58,19 @@ class AliadoForm(TemplateView):
     template_name = 'aliados.html'
 
 class ServicesView(TemplateView):
-    template_name ='services.html'
+    template_name ='servicesView.html'
 
 class ServicesForm(TemplateView):
     template_name ='servicesForm.html'
-
-    def get(self, request):
-        form_instance = UserForm()
-        return render(request, self.template_name, {'form': form_instance})
-
-    def post(self, request):
-        form_instance = UserForm(request.POST)
-        if form_instance.is_valid():
-            form_instance.save()
-            return redirect('principal')  
-        return render(request, self.template_name, {'form': form_instance})
+    def get(self, request, *args, **kwargs):
+        form = ServiceForm()
+        return render(request, self.template_name, {'form': form})
+    def post(self, request, *args, **kwargs):
+        form = ServiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('servicesView')
+        return self.render_to_response({'form': form})
 class AboutPageView(TemplateView):
     template_name = 'about.html'
 class Aliado(TemplateView):

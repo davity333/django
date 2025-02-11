@@ -291,28 +291,34 @@
     </header>
 
     <section>
-        <div class="form-container">
-            <h2>Agregar servicio</h2>
-            <form>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-    
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
-    
-                <label for="tecnologia">Tecnología:</label>
-                <select id="tecnologia" name="tecnologia">
-                    <option value="python">Python</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="java">Java</option>
-                    <option value="otros">Otros</option>
-                </select>
-    
+        <form method="POST" action="{% url 'servicesForm' %}">
+            {% csrf_token %}
+            <div class="form-container">
+                <h2>Agregar Servicio</h2>
+                <!-- Nombre -->
+                <div class="form-field">
+                    <label for="{{ form.name.id_for_label }}">Nombre</label>
+                    {{ form.name }}
+                </div>
+
+                <!-- Descripción -->
+                <div class="form-field">
+                    <label for="{{ form.description.id_for_label }}">Descripción</label>
+                    {{ form.description }}
+                </div>
+
+                <!-- Tecnologías -->
+                <div class="form-field">
+                    <label for="{{ form.technologies.id_for_label }}">Tecnología</label>
+                    {{ form.technologies }}
+                </div>
+
                 <button type="submit">Enviar</button>
-            </form>
-        </div>
+            </div>
+        </form>
+
         <div class="texto">
-        <a href="" class="palabra">Administrar servicios</a>
+            <a href="" class="palabra">Administrar servicios</a>
         </div>
     </section>
 

@@ -15,7 +15,7 @@ urlpatterns = [
     path('user/', UserView.as_view(), name= 'user'),
     path('aliados', Aliado.as_view(), name= 'aliados'),
     path('users/', UsersView.as_view(), name='users'),
-    path('users/<int:pk>/', UsersView.as_view(), name='user_detail'), # Esta será la vista por defecto
+    path('users/<int:pk>/', UsersView.as_view(), name='user_detail'), 
     path('servicesForm/', ServicesForm.as_view(), name='servicesForm'),
     path('servicesView/', ServicesView.as_view(), name='servicesView')
 
