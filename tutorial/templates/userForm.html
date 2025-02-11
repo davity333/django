@@ -165,13 +165,13 @@
         </nav>
     </header>
 
-    <form class="form" action="{% url 'form_login' %}" method="post">
+    <form class="form" action="{% url 'user' %}" method="post">
         {% csrf_token %}
         
         <h2 style="color: #fff;">Agregar usuario</h2>
     
         <div class="input-group">
-            <label for="{{ form.name.id_for_label }}">Nombre de usuario</label>
+            <label for="{{ form.name.id_for_label}}">Nombre de usuario</label>
             {{ form.name }}  <!-- Asegúrate de mostrar el campo 'username' -->
         </div>
         <div class="input-group">

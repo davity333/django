@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
     <style>
+        /* Estilos del encabezado */
         header {
             width: 100%;
             position: fixed;
@@ -18,200 +18,62 @@
             align-items: center;
             justify-content: space-between;
             z-index: 1000;
+            border-bottom: 1px solid #444;
         }
 
-        .logo {
-            font-size: 24px;
+        header .logo {
+            font-size: 1.5em;
             font-weight: bold;
-            color: #00f0ff;
+            color: #fff;
+            text-transform: uppercase;
         }
 
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
-        ul {
+        header ul {
             list-style: none;
+            margin: 0;
+            padding: 0;
             display: flex;
             gap: 15px;
-            padding: 0;
-            margin: 0;
         }
 
-        ul li {
+        header ul li {
             display: inline;
         }
 
-        ul li a {
+        header ul li a {
+            color: #ccc;
             text-decoration: none;
-            color: #fff;
-            font-size: 14px;
-            transition: color 0.3s;
+            padding: 10px;
+            transition: background-color 0.3s;
         }
 
-        ul li a:hover {
-            color: #00f0ff;
-        }
-
-        .btn {
-            background: linear-gradient(90deg, #00f0ff, #6f00ff);
-            border: none;
-            padding: 10px 15px;
-            color: #fff;
-            font-weight: bold;
+        header ul li a:hover {
+            background-color: #444;
             border-radius: 5px;
-            cursor: pointer;
-            margin-left: 20px;
-            transition: 0.3s;
         }
 
-        .btn:hover {
-            opacity: 0.8;
+        header .btn {
+            background-color: #004080;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 80px 20px 50px;
-            margin-top: 100px; /* Asegura que no quede pegado al header */
+        header .btn:hover {
+            background-color: #0055aa;
         }
 
-        .hero h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #bbb;
-        }
-
-        /* Content Section */
-        .content {
-            margin-top: 40px;
-            padding: 20px;
-        }
-
-        .image-container img {
-            width: 45%;
-            margin: 10px;
-            border-radius: 10px;
-        }
-
-        /* Sección Sobre Nosotros */
-        .about {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 3rem;
-            gap: 2rem;
-        }
-
-        .about-content {
-            max-width: 50%;
-        }
-
-        .about-content h2 {
-            font-size: 2rem;
-        }
-
-        .about-content p {
-            font-size: 16px;
-            color: #bbb;
-        }
-
-        .about-image img {
-            width: 300px;
-            border-radius: 10px;
-        }
-
-        /* Sección de Servicios */
-        .services {
-            display: flex;
-            max-width: 1000px;
-            margin: auto;
-            gap: 2rem;
-            padding: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .services-intro {
-            max-width: 40%;
-        }
-
-        .tag {
-            display: inline-block;
-            background: linear-gradient(90deg, #00f0ff, #6f00ff);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            width: 60%;
-        }
-
-        .service-card {
-            background-color: #111;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: left;
-        }
-
-        .icon {
-            font-size: 30px;
-            background: #00f0ff;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .about {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about-content, .services-intro {
-                max-width: 100%;
-            }
-
-            .about-image img {
-                width: 100%;
-            }
-
-            .services {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                width: 100%;
-            }
-        }
-
+        /* Estilos del cuerpo y tabla */
         body {
             background-color: #121212;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+            margin-top: 70px; /* Ajustar espacio para el header fijo */
         }
+
         table {
             width: 80%;
             margin: 20px auto;
@@ -219,23 +81,29 @@
             background-color: #1e1e2e;
             color: white;
         }
+
         th, td {
             border: 1px solid white;
             padding: 10px;
         }
+
         th {
             background-color: #003366;
         }
+
         button {
             background-color: #004080;
             color: white;
             padding: 5px 10px;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
         }
+
         button:hover {
             background-color: #0055aa;
         }
+
         .edit-form {
             background-color: #1e1e2e;
             padding: 20px;
@@ -243,13 +111,14 @@
             width: 50%;
             border-radius: 10px;
         }
+
         input {
             width: 100%;
             padding: 5px;
             margin: 5px 0;
         }
 
-        section{
+        section {
             margin-top: 9%;
         }
     </style>
@@ -268,57 +137,53 @@
                 <li><a href="#">Reseñas</a></li>
                 <li><a href="#">Servicios</a></li>
             </ul>
-            <a class="btn" href="{% url 'form_login' %}">
-                Agregar usuario
-            </a>
+            <a class="btn" href="{% url 'form_login' %}">Agregar usuario</a>
         </nav>
     </header>
 
+    <section>
+        <h2>Lista de Usuarios</h2>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Contraseña</th>
+                <th>Acciones</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>******</td>
+                <td>
+                    <!-- Eliminar Usuario -->
+                    <form action="{% url 'users' %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{ user.id }}">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                    <!-- Editar Usuario -->
+                    <a href="{% url 'user_detail' user.id %}" class="btn">Editar</a> <!-- Enlaza con la URL de edición -->
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        
 
-<section>
-    <h2>Lista de Usuarios</h2>
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Usuario</th>
-            <th>Contraseña</th>
-            <th>Acciones</th>
-        </tr>
-        <tr>
-            <td>Ejemplo 1</td>
-            <td>usuario1</td>
-            <td>******</td>
-            <td>
-                <button>Editar</button>
-                <button>Eliminar</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Ejemplo 2</td>
-            <td>usuario2</td>
-            <td>******</td>
-            <td>
-                <button>Editar</button>
-                <button>Eliminar</button>
-            </td>
-        </tr>
-    </table>
-
-    <!-- Formulario de Edición -->
-    <div class="edit-form">
-        <h2>Editar Usuario</h2>
-        <form>
-            <label>Nombre:</label>
-            <input type="text">
-            <label>Usuario:</label>
-            <input type="text">
-            <label>Contraseña:</label>
-            <input type="password">
-            <button type="submit">Guardar Cambios</button>
-            <button type="button">Cancelar</button>
-        </form>
-    </div>
-</section>
+        <!-- Formulario de Edición -->
+        {% if edit %}
+        <!-- Formulario de Edición -->
+        <div class="edit-form">
+            <h2>Editar Usuario</h2>
+            <form method="POST" action="{% url 'user_detail' pk=user.id %}">
+                {% csrf_token %}
+                <input type="text" name="name" value="{{ user.name }}">
+                <input type="email" name="email" value="{{ user.email }}">
+                <input type="password" name="password" value="{{ user.password }}">
+                <button type="submit">Actualizar Usuario</button>
+            </form>
+        </div>
+        {% endif %}
+    </section>
 </body>
 </html>
-
