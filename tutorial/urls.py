@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from tutorial.view import index
-from tutorial.view import AboutPageView, Proyect, Experience, User, principal, formLogin, UsersView, Aliado, UserView, ServicesView, ServicesForm
+from tutorial.view import AboutPageView, Proyect, Experience, User, principal, formLogin, UsersView, Aliado, UserView, ServicesForm, ServicesView
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,7 +15,9 @@ urlpatterns = [
     path('user/', UserView.as_view(), name= 'user'),
     path('aliados', Aliado.as_view(), name= 'aliados'),
     path('users/', UsersView.as_view(), name='users'),
+    path('users/<int:pk>/', UsersView.as_view(), name='user_detail'), # Esta será la vista por defecto
     path('servicesForm/', ServicesForm.as_view(), name='servicesForm'),
     path('servicesView/', ServicesView.as_view(), name='servicesView')
+
 ]
 
