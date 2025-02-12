@@ -105,9 +105,8 @@
             <!-- {{ error }} -->
         </div>
 
-        <form method="post" action="{% url 'proyecto' %}">
+        <form method="post" action ="{% url 'proyect' %}">
             {% csrf_token %}
-            
             <div class="form-group">
                 <label for="{{ form.name.id_for_label }}">Nombre del Proyecto</label>
                 {{ form.name }}

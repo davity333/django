@@ -220,14 +220,12 @@
         <nav>
             <div class="logo">IngeCode</div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Aliados</a></li>
-                <li><a href="#">Contactos</a></li>
-                <li><a href="#">Educación</a></li>
-                <li><a href="#">Nosotros</a></li>
+                <li><a href="{% url 'aliados' %}">Aliados</a></li>
+                <li><a href="{% url 'users' %}">Usuario</a></li>
+                <li><a href="{% url 'experiencia' %}">Experiencia</a></li>
                 <li><a href="#">Proyectos</a></li>
-                <li><a href="#">Reseñas</a></li>
-                <li><a href="#">Servicios</a></li>
+                <li><a href="{% url 'servicesView' %}">Servicios</a></li>
+                <li><a href="#">CERRAR SESIÓN</a></li>
             </ul>
             <a class="btn" href="{% url 'form_login' %}">
                 Agregar usuario
@@ -236,25 +234,29 @@
     </header>
 
     <form class="form" method="post">
-        
+        {% csrf_token %}
         <h2 style="color: #fff;">Agregar Aliados</h2>
     
         <div class="input-group">
-            <label >Primera colaboracion</label>
+            <label for="id_number_colaborator">Número de colaboración</label>
+            {{ form.number_colaborator }}  <!-- Campo de formulario -->
         </div>
         <div class="input-group">
-            <label >Descripcion</label>
+            <label for="id_first_colaborator">Primera colaboración</label>
+            {{ form.first_colaborator }}  <!-- Campo de formulario -->
         </div>
         <div class="input-group">
-            <label >Nombre alie</label>
-            
+            <label for="id_description">Descripción</label>
+            {{ form.description }}  <!-- Campo de formulario -->
+        </div>
+        <div class="input-group">
+            <label for="id_name_allie">Nombre del aliado</label>
+            {{ form.name_allie }}  <!-- Campo de formulario -->
         </div>
     
-        <button type="submit" class="btn">Agregar aliado</button>
+        <button type="submit" class="btn">Agregar aliado xd</button>
     </form>
     
-
-    </form>    
 
 </body>
 </html>

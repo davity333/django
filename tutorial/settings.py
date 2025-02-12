@@ -87,23 +87,23 @@ DEBUG = True
 SECRET_KEY = 'django-insecure-&#s@p7@q-ld)=rvl8xcqje_7$aj0m2#!4qi!!uhzdkzrz@&7p5'
 
 DATABASES = {
-    'default': {
-       'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+   'default': {
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': os.getenv('DB_NAME'),
+    'USER': os.getenv('DB_USER'),
+    'PASSWORD': os.getenv('DB_PASSWORD'),
+    'HOST': os.getenv('DB_HOST'),
+    'PORT': os.getenv('DB_PORT'),
     }
 }
 
 #DATABASES = {
-   # 'default': {
-     #   'ENGINE': 'django.db.backends.mysql',
-     #    'USER': 'root',
-      #  'PASSWORD': 'davity',
-       # 'HOST': '127.0.0.1',
-       # 'PORT': '3306',
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.mysql',
+   #      'USER': 'root',
+    #    'PASSWORD': 'davity',
+     #   'HOST': '127.0.0.1',
+      #  'PORT': '3306',
     #}
 #}
 

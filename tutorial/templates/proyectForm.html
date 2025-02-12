@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Proyectos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 3%;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            background-color: #121212;
+            box-shadow: 0 0 15px #00bfff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #00bfff;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #0077b6;
+            color: #fff;
+        }
+        td {
+            background-color: #1c1c1c;
+        }
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            background: none;
+            color: inherit;
+        }
+        .edit {
+            color: #ffffff;
+        }
+        .delete {
+            color: #fff;
+        }
+        .form-container {
+            background-color: #121212;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00bfff;
+            text-align: left;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #00bfff;
+            background-color: #1c1c1c;
+            color: #00bfff;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #00bfff;
+            color: #121212;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0077b6;
+        }
+    </style>
+</head>
+<body>
+    <h2>Lista de Proyectos</h2>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Tecnologías</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proyect in proyects %}
+                <tr>
+                    <td>{{ proyect.name }}</td>
+                    <td>{{ proyect.date }}</td>
+                    <td>{{ proyect.description }}</td>
+                    <td>{{ proyect.technologies }}</td>
+                    <td>
+                        <a href="{% url 'proyectoForm_detail' pk=proyect.id %}" class="btn edit">Editar</a>
+                        <form method="POST" action="{% url 'proyectoForm' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="proyect_id" value="{{ proyect.id }}">
+                            <button type="submit" class="btn delete">Eliminar</button>
+                        </form>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="form-container">
+            <h3>{% if edit %}Editar{% else %}Agregar{% endif %} Proyecto</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" value="{{ proyect.name|default_if_none:'' }}" required>
+                <label for="date">Fecha</label>
+                <input type="date" id="date" name="date" value="{{ proyect.date|default_if_none:'' }}" required>
+                <label for="description">Descripción</label>
+                <textarea id="description" name="description" rows="4" required>{{ proyect.description|default_if_none:'' }}</textarea>
+                <label for="technologies">Tecnologías</label>
+                <input type="text" id="technologies" name="technologies" value="{{ proyect.technologies|default_if_none:'' }}" required>
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
