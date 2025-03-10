@@ -240,6 +240,20 @@
     
     <section class="hero">
         <h2>Welcome to IngeCode</h2>
+        <script>
+            console.log('ws://'+window.location.host+'/ws/consumers/ \n')
+            const socket = new WebSocket('ws://'+window.location.host+'/ws/consumers/');
+            socket.onmessage = function(e) {
+                const data = JSON.parse(e.data);
+                console.log('ws://'+window.location.host+'/ws/consumers/ \n' +data.services.forEach(service => console.log(service)));
+            };
+            socket.send(JSON.stringify({ 
+            nombre: 'papu', 
+            description: 'este es un papu', 
+            technologies: 'para hacer papus' 
+}));
+
+        </script>
         <h1>IngeCode - Creando innovación con software</h1>
         <p><strong>IngeCode</strong> es una empresa especializada en el desarrollo de <strong>sitios web</strong>, <strong>landing pages</strong> y <strong>aplicaciones web</strong>, tanto dinámicas como estáticas.</p>
         <button class="btn">Conocer</button>

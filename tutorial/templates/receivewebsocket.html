@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Demo - Carreras Disponibles</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f0f0f0;
+    }
+    header {
+      margin-bottom: 20px;
+    }
+    header h1 {
+      color: #333;
+    }
+    /* Estilos para la sección de carreras */
+    #carreras {
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #carreras div {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+    #carreras h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: #007bff;
+    }
+    #carreras p {
+      margin: 0.5rem 0 0;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Carreras Disponibles</h1>
+  </header>
+  <section id="carreras">
+    <p>Cargando información de carreras...</p>
+  </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Conecta al WebSocket usando la IP y puerto configurados
+      var socket = new WebSocket('ws://10.10.0.42:5050/ws/carrera/');
+      
+      socket.onopen = function(event) {
+        console.log('Conexión WebSocket establecida');
+      };
+
+      socket.onmessage = function(event) {
+        console.log('Datos recibidos:', event.data);
+        var data = JSON.parse(event.data);
+        var carrerasDiv = document.getElementById('carreras');
+        carrerasDiv.innerHTML = '';
+        if (data.carreras && data.carreras.length > 0) {
+          data.carreras.forEach(function(carrera) {
+            var carreraDiv = document.createElement('div');
+            carreraDiv.innerHTML = '<h2>' + carrera.nombre + '</h2><p>' + carrera.descripcion + '</p>';
+            carrerasDiv.appendChild(carreraDiv);
+          });
+        } else {
+          carrerasDiv.innerHTML = '<p>No se encontraron carreras disponibles</p>';
+        }
+      };
+
+      socket.onerror = function(error) {
+        console.error('Error en la conexión WebSocket:', error);
+        document.getElementById('carreras').innerHTML = '<p>Error al conectar con el servidor. Por favor, intenta más tarde.</p>';
+      };
+
+      socket.onclose = function(event) {
+        console.log('Conexión WebSocket cerrada:', event);
+        if (!event.wasClean) {
+          document.getElementById('carreras').innerHTML = '<p>La conexión con el servidor se ha perdido. Por favor, recarga la página.</p>';
+        }
+      };
+    });
+  </script>
+</body>
+</html>

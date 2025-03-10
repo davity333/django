@@ -56,6 +56,8 @@ class principal(TemplateView):
   
 class formLogin(TemplateView):  
     template_name = 'userForm.html'
+class ReceiveWebSocket(TemplateView):
+    template_name ='receivewebsocket.html'
 
 
 class ServicesView(TemplateView):
@@ -100,7 +102,6 @@ class ServicesForm(TemplateView):
             return redirect('servicesView')
         return self.render_to_response({'form': form})
 
-
 class AliadoForm(TemplateView):
     template_name = 'aliadosUpdate.html'
     def get(self, request, pk=None):
@@ -135,7 +136,7 @@ class AliadoForm(TemplateView):
             form = AlliesForm()
 
         allies = Allies.objects.all()
-        return render(request, self.template_name, {'form': form, 'allies': allies, 'edit': pk is not None})
+        return render(request, self.template_name, {'form': form, 'allies': allies, 'edit': pk is not None, 'has_perm': request.user.has_perm('tutorial.change_allie')})
 
 
 class ProyectoForm(TemplateView):

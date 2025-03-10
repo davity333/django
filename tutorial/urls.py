@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from tutorial.view import AboutPageView, Proyect, Experience, principal, UsersView, Aliado, UserView, ServicesView, ServicesForm, ProyectoForm, ExperienciaForm, AliadoForm
+from tutorial.view import AboutPageView, ReceiveWebSocket,Proyect, Experience, principal, UsersView, Aliado, UserView, ServicesView, ServicesForm, ProyectoForm, ExperienciaForm, AliadoForm
 from django.contrib.auth import views as auth_views
 from tutorial.viewLogin import LoginView
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
     path('proyectForm/<int:pk>', ProyectoForm.as_view(), name= 'proyectoForm_detail'),
     path('experienceForm/', ExperienciaForm.as_view(), name='experience'),
     path('experienceForm/<int:pk>/', ExperienciaForm.as_view(), name='experience_detail'),
+    path('receiveWebSocket',ReceiveWebSocket.as_view(), name='receiveWeSocket'),
 
 ]
 

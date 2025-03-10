@@ -357,6 +357,7 @@
 
         <!-- Formulario de Edición -->
         <div class="form-container">
+            {%if has_perm%}
             <h3>{% if form.instance.pk %}Editar Alias{% else %}Agregar Alias{% endif %}</h3>
             <form method="post">
                 {% csrf_token %}
@@ -364,6 +365,7 @@
                 <button type="submit">{% if form.instance.pk %}Guardar Cambios{% else %}Agregar Alias{% endif %}</button>
             </form>
             <a class="agregar" href="{% url 'servicesForm' %}">Agregar nuevo Alias</a>
+            {% endif %}
         </div>
     </div>
 
