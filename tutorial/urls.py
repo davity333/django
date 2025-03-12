@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 from tutorial.viewLogin import LoginView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', principal.as_view(), name=''),
+    path('', principal.as_view(), name='principal'),
     path('userForm/', UserView.as_view(), name= 'form_login'),
     path('about', AboutPageView.as_view(), name= 'about'),
     path('login/', auth_views.LoginView.as_view(template_name = 'login.html'), name= 'login'),
@@ -26,6 +26,5 @@ urlpatterns = [
     path('experienceForm/', ExperienciaForm.as_view(), name='experience'),
     path('experienceForm/<int:pk>/', ExperienciaForm.as_view(), name='experience_detail'),
     path('receiveWebSocket',ReceiveWebSocket.as_view(), name='receiveWeSocket'),
-
 ]
 

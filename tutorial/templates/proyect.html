@@ -105,36 +105,81 @@
             <!-- {{ error }} -->
         </div>
 
-        <form method="post" action ="{% url 'proyect' %}">
+        <form id="projectForm">
             {% csrf_token %}
             <div class="form-group">
-                <label for="{{ form.name.id_for_label }}">Nombre del Proyecto</label>
-                {{ form.name }}
+                <label for="id_name">Nombre del Proyecto</label>
+                <input type="text" id="id_name" name="name" required>
             </div>
 
             <div class="form-group">
-                <label for="{{ form.date.id_for_label }}">Fecha de Inicio</label>
-                {{ form.date }}
+                <label for="id_date">Fecha de Inicio</label>
+                <input type="text" id="id_date" name="date" required>
             </div>
 
             <div class="form-group">
-                <label for="{{ form.description.id_for_label }}">Descripción</label>
-                {{ form.description }}
+                <label for="id_description">Descripción</label>
+                <textarea id="id_description" name="description" required></textarea>
             </div>
 
             <div class="form-group">
-                <label for="{{ form.technologies.id_for_label }}">Tecnologías Usadas</label>
-                {{ form.technologies }}
+                <label for="id_technologies">Tecnologías Usadas</label>
+                <input type="text" id="id_technologies" name="technologies" required>
             </div>
 
             <div class="form-group">
-                <label for="{{ form.allie.id_for_label }}">Aliado</label>
-                {{ form.allie }}
+                <label for="id_allie">Aliado</label>
+                <select id="id_allie" name="allie">
+                    <!-- Añade opciones para los aliados -->
+                </select>
             </div>
 
             <button type="submit">Guardar Proyecto</button>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('projectForm');
+            const websocket = new WebSocket('ws://localhost:8000/ws/consumers/');
+
+            websocket.onopen = function () {
+                console.log('WebSocket connected');
+            };
+
+            websocket.onmessage = function (event) {
+                const data = JSON.parse(event.data);
+                console.log('Received:', data);
+                alert('Datos enviados correctamente');
+            };
+
+            websocket.onclose = function () {
+                console.log('WebSocket disconnected');
+            };
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                alert('Guardando proyecto...');
+
+                const name = document.getElementById('id_name').value;
+                const date = document.getElementById('id_date').value;
+                const description = document.getElementById('id_description').value;
+                const technologies = document.getElementById('id_technologies').value;
+                const allie = document.getElementById('id_allie').value;
+
+                const data = {
+                    name: name,
+                    date: date,
+                    description: description,
+                    technologies: technologies,
+                    allie_id: allie
+                };
+
+                websocket.send(JSON.stringify(data));
+                console.log('Sent:', data);
+            });
+        });
+    </script>
 
 </body>
 </html>

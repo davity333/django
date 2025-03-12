@@ -155,8 +155,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-#BASE_DIR / "tutorial","C:\\Users\\reygu\\Desktop\\UNIVERSIDAD POLITECNICA DE CHIAPAS\\5TO CUATRIMESTRE\\Programación Cliente Servidor\\Corte 2\\django\\tutorial\\tutorial\\static"
-BASE_DIR /"static",  "C:\\Users\\hecso\\Desktop\\UP\\django2\\django"
+#BASE_DIR / "tutorial","C:\\\\Users\\\\reygu\\\\Desktop\\\\UNIVERSIDAD POLITECNICA DE CHIAPAS\\\\5TO CUATRIMESTRE\\\\Programación Cliente Servidor\\\\Corte 2\\\\django\\\\tutorial\\\\tutorial\\\\static"
+BASE_DIR /"static",  "C:\\Users\\reygu\\Desktop\\UNIVERSIDAD POLITECNICA DE CHIAPAS\\5TO CUATRIMESTRE\\Programación Cliente Servidor\\Corte 2\\websocket\\django\\tutorial"
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
